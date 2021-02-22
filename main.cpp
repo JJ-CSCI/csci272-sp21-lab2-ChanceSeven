@@ -9,7 +9,37 @@ enum class Compass {N, S, W, E};
 
 // Write your code here
 class GPS {
-
+  double LatitudeAng;
+  Compass LatitudeDis;
+  double LongitudeAng;
+  Compass LongitudeDis;
+  
+  public:
+  GPS(double LatitudeAng, Compass LatitudeDis, double LongitudeAng, Compass LongitudeDis);
+    GPS(){
+      LatitudeAng=0;
+      LongitudeAng=0;
+      LatitudeDis=Compass::N;
+      LongitudeDis=Compass::W;
+    }
+    GPS(double longD, double latD){
+      LatitudeAng=(latD>90) || (latD<0) ? 0:latD;
+      LatitudeDis=Compass::N;
+      LongitudeAng=(longD>180) || (longD <0)? 0:longD;
+      LongitudeDis=Compass::W;
+    }
+    double getLatitude(){
+      return LatitudeAng;
+    }
+    double getLongitude(){
+      return LongitudeAng;
+    }
+    Compass getLatitudeDirection(){
+      return LatitudeDis;
+    }
+    Compass getLongitudeDirection(){
+      return LongitudeDis;
+    }
 };
 
 //------------------------------
